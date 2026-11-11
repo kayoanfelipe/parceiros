@@ -233,9 +233,33 @@ function semViuva(raiz) {
   });
 }
 
+/* Equilibra frases curtas em qualquer navegador: estreita a caixa até o menor
+   tamanho que mantém o mesmo número de linhas, para as linhas ficarem parecidas. */
+const EQUILIBRAR = "h1, .lead, .desc, .big-sub, .price, .count, .status, .cta h2, .cta p, .compare .s, .base-grid p";
+function equilibrar() {
+  document.querySelectorAll(EQUILIBRAR).forEach((el) => {
+    el.style.maxWidth = "";
+    const altura = el.getBoundingClientRect().height;
+    const linha = parseFloat(getComputedStyle(el).lineHeight) || 20;
+    if (altura < linha * 1.6) return;
+    let hi = el.getBoundingClientRect().width, lo = hi / 3;
+    while (hi - lo > 2) {
+      const meio = (hi + lo) / 2;
+      el.style.maxWidth = meio + "px";
+      if (el.getBoundingClientRect().height > altura + 1) lo = meio; else hi = meio;
+    }
+    el.style.maxWidth = Math.ceil(hi) + 1 + "px";
+    if (getComputedStyle(el).textAlign === "center") { el.style.marginLeft = "auto"; el.style.marginRight = "auto"; }
+  });
+}
+let esperaEq;
+window.addEventListener("resize", () => { clearTimeout(esperaEq); esperaEq = setTimeout(equilibrar, 120); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(equilibrar);
+
 function montar() {
   $("#app").innerHTML = PAGE === "home" ? home() : nivel(PAGE);
   semViuva($("#app"));
+  equilibrar();
 }
 montar();
 $("#ano").textContent = new Date().getFullYear();
