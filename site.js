@@ -81,6 +81,7 @@ const ORDEM = ["principal", "oficiais", "apoiadores"];
 
 const REGRAS = [
   "A cota é paga em dinheiro, à vista, na assinatura do contrato anual.",
+  "Não fazemos parceria por link de indicação, afiliado ou comissão. A marca entra só pela cota, e qualquer comissão de venda fica com ela.",
   "Produto, brinde, ativação e experiência na The House são à parte da cota, por conta da marca, e passam pela aprovação do The Group.",
   "Sem pitch de venda nos eventos.",
   "Nenhum patrocinador tem acesso a dados ou contatos dos membros.",
