@@ -206,11 +206,40 @@ function nivel(n) {
   return h;
 }
 
+/* Quebra de linha: nunca deixa uma palavra sozinha na última linha,
+   nem separa "R$" do valor, número da palavra seguinte ou palavra de uma letra. */
+function semViuva(raiz) {
+  raiz.querySelectorAll("h1, h2, h3, p, li, dt, dd").forEach((el) => {
+    if (el.querySelector("p, li")) return;
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const nos = [];
+    while (w.nextNode()) nos.push(w.currentNode);
+    nos.forEach((n) => {
+      let t = n.nodeValue.replace(/R\$ /g, "R$\u00a0").replace(/(\d) (?=\S)/g, "$1\u00a0");
+      for (let k = 0; k < 2; k++) t = t.replace(/(^|[\s\u00a0])(\S) (?=\S)/g, "$1$2\u00a0");
+      n.nodeValue = t;
+    });
+    let fim = true;
+    for (let i = nos.length - 1; i >= 0; i--) {
+      let t = nos[i].nodeValue;
+      if (fim) { t = t.replace(/\s+$/, ""); if (!t) continue; fim = false; }
+      const k = t.lastIndexOf(" ");
+      if (k >= 0) {
+        if (k === 0 && i === 0) return;
+        nos[i].nodeValue = nos[i].nodeValue.slice(0, k) + "\u00a0" + nos[i].nodeValue.slice(k + 1);
+        return;
+      }
+    }
+  });
+}
+
 function montar() {
   $("#app").innerHTML = PAGE === "home" ? home() : nivel(PAGE);
+  semViuva($("#app"));
 }
 montar();
 $("#ano").textContent = new Date().getFullYear();
+semViuva(document.querySelector("footer"));
 if (PAGE !== "home") {
   document.title = NIVEIS[PAGE].rotulo + " · Parceiros · The Group";
   window.addEventListener("hashchange", montar);

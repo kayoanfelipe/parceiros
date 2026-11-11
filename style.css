@@ -217,3 +217,8 @@ footer a:hover { text-decoration: underline; }
   .slots { gap: 12px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Quebra de linha: frases curtas equilibradas, parágrafos sem palavra sozinha no fim */
+h1, h2, h3, .lead, .desc, .big-sub, .price, .count, .status, .cta p, .compare .s, .base-grid p, .gets dt { text-wrap: balance; }
+.gets dd, .gets dd li, .rules li, footer p { text-wrap: pretty; }
+.lead { max-width: 600px; }
