@@ -42,7 +42,7 @@ const NIVEIS = {
       ["App", "Primeiro lugar na aba de parceiros, com um benefício exclusivo para os membros."],
       ["Site", "Logo grande na home de ogrupo.com.br e no topo de /parcerias, com link. O site recebe tráfego pago todo mês."],
       ["Instagram", "<strong>Marcação em todo conteúdo de encontro e de The House.</strong> Mais 6 posts em collab por ano: 2 da The House e 4 de encontros."],
-      ["3 entradas no grupo", "Para os 3 clientes que mais crescem com a sua empresa, aprovados pela nossa curadoria. Cada um entra com um press kit da marca e do The Group."],
+      ["3 entradas no grupo", "Para os 3 clientes que mais crescem com a sua empresa, aprovados pela nossa curadoria. Cada um entra com um press kit da marca e do The Group e fica no grupo enquanto o contrato estiver ativo."],
       ["Relatório", "Depois de cada evento: fotos, alcance e presença em número e perfil, sem nomes. Todo mês: visitas ao site e cliques no link da marca."],
     ],
   },
