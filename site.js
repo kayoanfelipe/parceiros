@@ -13,6 +13,7 @@ const AJUSTES = {
   receita: "R$ 6 bi+",
   receitaTexto: "em receita somada pelos membros do grupo",
   whatsapp: "5543996459340",
+  pagamento: "Contrato anual, cobrado mês a mês",
   preco: { principal: "R$ 150 mil por ano", oficiais: "R$ 50 mil por ano", apoiadores: "R$ 15 mil por ano" },
   vagas: {
     principal: [null],
@@ -80,7 +81,7 @@ const NIVEIS = {
 const ORDEM = ["principal", "oficiais", "apoiadores"];
 
 const REGRAS = [
-  "Contrato anual, pago mensalmente.",
+  "Contrato anual, pago mensalmente. O valor de cada cota é o total do ano, cobrado da marca em parcelas mensais.",
   "A exposição vale enquanto o pagamento estiver em dia. Para estar na The House, é preciso estar em dia antes do evento.",
   "Em caso de rescisão, a vaga é reaberta para outra marca.",
   "Não fazemos parceria por link de indicação, afiliado ou comissão. A marca entra só pela cota, e qualquer comissão de venda fica com ela.",
@@ -156,7 +157,7 @@ function cta(texto, sub) {
 
 function home() {
   let h = '<section class="hero wrap"><p class="eyebrow">Cotas de patrocínio</p><h1>The Partners</h1>' +
-    '<p class="lead muted">Três níveis de parceria com o grupo, por contrato anual. Clique numa vaga aberta para ver tudo o que aquele nível recebe.</p></section>';
+    '<p class="lead muted">Três níveis de parceria com o grupo, em contrato anual com pagamento mensal. Clique numa vaga aberta para ver tudo o que aquele nível recebe.</p></section>';
 
   h += '<section class="wrap"><div class="audience"><p class="big">' + esc(AJUSTES.receita) + '</p><p class="big-sub">' + esc(AJUSTES.receitaTexto) + '</p>' +
     '<ul class="chips">' + PERFIL.map((p) => "<li>" + p + "</li>").join("") + "</ul></div></section>";
@@ -166,7 +167,7 @@ function home() {
     h += (k ? '<div class="wrap"><hr class="sep"></div>' : "") +
       '<section class="tier wrap" id="' + n + '"><h2 class="label">' + N.rotulo + "</h2>" +
       '<p class="desc">' + N.curto + "</p>" +
-      (AJUSTES.preco[n] ? '<p class="price"><b>' + esc(AJUSTES.preco[n]) + "</b></p>" : "") +
+      (AJUSTES.preco[n] ? '<p class="price"><b>' + esc(AJUSTES.preco[n]) + '</b></p><p class="pay">' + esc(AJUSTES.pagamento) + "</p>" : "") +
       '<p class="count">' + N.vagasTexto + " &middot; " + contagem(n) + "</p>" +
       slots(n) +
       '<a class="more" href="' + ROOT + n + '/">Ver o que ' + (n === "principal" ? "o parceiro principal recebe" : n === "oficiais" ? "os oficiais recebem" : "os apoiadores recebem") + " " + SETA_DIR + "</a></section>";
@@ -193,7 +194,7 @@ function nivel(n) {
 
   let h = '<section class="hero wrap"><p class="eyebrow">' + N.rotulo + "</p><h1>" + N.titulo + "</h1>" +
     '<p class="lead muted">' + N.resumo + "</p>" +
-    (preco ? '<p class="price"><b>' + esc(preco) + "</b></p>" : "") +
+    (preco ? '<p class="price"><b>' + esc(preco) + '</b></p><p class="pay">' + esc(AJUSTES.pagamento) + "</p>" : "") +
     slots(n, destaque) + '<p class="status">' + status + "</p></section>";
 
   h += '<section class="gets wrap"><h2 class="label left">O que este nível recebe</h2><dl>' +
@@ -237,7 +238,7 @@ function semViuva(raiz) {
 
 /* Equilibra frases curtas em qualquer navegador: estreita a caixa até o menor
    tamanho que mantém o mesmo número de linhas, para as linhas ficarem parecidas. */
-const EQUILIBRAR = "h1, .lead, .desc, .big-sub, .price, .count, .status, .cta h2, .cta p, .compare .s, .base-grid p";
+const EQUILIBRAR = "h1, .pay, .lead, .desc, .big-sub, .price, .count, .status, .cta h2, .cta p, .compare .s, .base-grid p";
 function equilibrar() {
   document.querySelectorAll(EQUILIBRAR).forEach((el) => {
     el.style.maxWidth = "";

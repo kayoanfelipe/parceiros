@@ -1,4 +1,4 @@
-/* versão 3 */
+/* versão 4 */
 :root {
   --bg: #ffffff;
   --ink: #000000;
@@ -223,3 +223,4 @@ footer a:hover { text-decoration: underline; }
 h1, h2, h3, .lead, .desc, .big-sub, .price, .count, .status, .cta p, .compare .s, .base-grid p, .gets dt { text-wrap: balance; }
 .gets dd, .gets dd li, .rules li, footer p { text-wrap: pretty; }
 .lead { max-width: 600px; }
+.pay { text-align: center; font-size: 13px; color: var(--muted); margin: 4px 0 0; text-wrap: balance; }
