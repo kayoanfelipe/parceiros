@@ -80,7 +80,9 @@ const NIVEIS = {
 const ORDEM = ["principal", "oficiais", "apoiadores"];
 
 const REGRAS = [
-  "A cota é paga em dinheiro, à vista, na assinatura do contrato anual.",
+  "Contrato anual, pago mensalmente.",
+  "A exposição vale enquanto o pagamento estiver em dia. Para estar na The House, é preciso estar em dia antes do evento.",
+  "Em caso de rescisão, a vaga é reaberta para outra marca.",
   "Não fazemos parceria por link de indicação, afiliado ou comissão. A marca entra só pela cota, e qualquer comissão de venda fica com ela.",
   "Produto, brinde, ativação e experiência na The House são à parte da cota, por conta da marca, e passam pela aprovação do The Group.",
   "Sem pitch de venda nos eventos.",
