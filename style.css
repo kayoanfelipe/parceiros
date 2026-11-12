@@ -1,4 +1,4 @@
-/* versão 4 */
+/* versão 5 */
 :root {
   --bg: #ffffff;
   --ink: #000000;
@@ -224,3 +224,8 @@ h1, h2, h3, .lead, .desc, .big-sub, .price, .count, .status, .cta p, .compare .s
 .gets dd, .gets dd li, .rules li, footer p { text-wrap: pretty; }
 .lead { max-width: 600px; }
 .pay { text-align: center; font-size: 13px; color: var(--muted); margin: 4px 0 0; text-wrap: balance; }
+
+/* Topo: logo centralizado; "Todas as cotas" à esquerda, como um voltar */
+.top { position: relative; justify-content: center; }
+.top .back { position: absolute; left: 24px; bottom: 2px; }
+@media (max-width: 380px) { .top .back { font-size: 13px; left: 16px; } }
