@@ -36,8 +36,8 @@ const NIVEIS = {
     vagasTexto: "1 vaga, exclusiva por segmento",
     entregas: [
       ["Exclusividade", "Nenhuma empresa do mesmo segmento entra em nenhum nível de patrocínio do The Group."],
-      ["The House", "<ul><li>“The House apresentada por” a sua marca.</li><li>Logo grande e sozinho no backdrop principal.</li><li><strong>3 convites por edição.</strong></li><li>Traz uma experiência para a casa, por conta da marca.</li><li>Faz o brinde de abertura, sem palestra.</li><li>Aparece no vídeo do evento.</li></ul>"],
-      ["Encontros mensais", "<ul><li>Todo encontro é “apresentado por” a sua marca: no convite, nas peças e no local.</li><li>A marca está presente com kit, brinde ou mesa, aprovados pelo The Group.</li><li>Um representante vai a até 3 encontros por ano, escolhidos junto com a gente.</li><li><strong>1 encontro próprio por ano</strong>, na região que a marca escolher, com membros escolhidos pela nossa curadoria.</li></ul>"],
+      ["The House", "<ul><li>“The House apresentada por” a sua marca, nas 2 edições do ano.</li><li>Logo grande e sozinho no backdrop principal.</li><li><strong>3 convites por edição.</strong></li><li>A cada edição, pode trazer uma experiência para a casa, por conta da marca.</li><li>Faz o brinde de abertura, sem palestra.</li><li>Aparece no vídeo do evento.</li></ul>"],
+      ["Encontros mensais", "<ul><li>Todo encontro é “apresentado por” a sua marca: no convite, nas peças e no local.</li><li>A marca está presente com kit, brinde ou mesa, aprovados pelo The Group.</li><li>Um representante vai a até 3 encontros por ano, escolhidos junto com a gente.</li></ul>"],
       ["Podcast do The Group", "Agradecimento em destaque no encerramento de todo episódio. Aparece nos cortes."],
       ["App", "Primeiro lugar na aba de parceiros, com um benefício exclusivo para os membros."],
       ["Site", "Logo grande na home de ogrupo.com.br e no topo de /parcerias, com link. O site recebe tráfego pago todo mês."],
@@ -48,19 +48,19 @@ const NIVEIS = {
   },
   oficiais: {
     rotulo: "Parceiros oficiais",
-    titulo: "Uma experiência da The House e um encontro por ano com a sua marca",
-    resumo: "Até 4 vagas, uma por categoria. Cada oficial assina uma experiência na The House e um encontro mensal no ano.",
-    curto: "Assina uma experiência na The House e um encontro por ano.",
+    titulo: "A sua marca na The House e nos encontros do grupo",
+    resumo: "Até 4 vagas, uma por categoria. Cada oficial está nas 2 edições da The House e aparece nos encontros mensais do grupo.",
+    curto: "Está na The House e aparece nos encontros do grupo.",
     vagasTexto: "Até 4 vagas, uma por categoria",
     entregas: [
       ["Exclusividade", "Só um parceiro oficial por categoria."],
-      ["The House", "<ul><li>Logo na parede de parceiros.</li><li><strong>3 convites por edição.</strong></li><li>Traz uma experiência para a casa com o nome da marca: o pôquer, o bar de charuto, a sinuca, o golfe. “O pôquer é da” sua marca.</li></ul>"],
-      ["Encontros mensais", "Assina a experiência de <strong>1 encontro por ano</strong>, por exemplo “o kart deste mês é da” sua marca. Um representante vai a esse encontro, e a marca é marcada no conteúdo dele. O encontro segue apresentado pelo parceiro principal."],
+      ["The House", "<ul><li>Presente nas 2 edições do ano.</li><li>Logo na parede de parceiros.</li><li><strong>3 convites por edição.</strong></li><li>A cada edição, pode trazer uma experiência para a casa com o nome da marca: o pôquer, o bar de charuto, a sinuca, o golfe. “O pôquer é da” sua marca.</li></ul>"],
+      ["Encontros mensais", "A marca aparece nos encontros com brinde, item no cardápio ou na mesa, combinados com a gente e aprovados pelo The Group. Um representante vai a 1 encontro por ano, escolhido junto com a gente. Os encontros seguem apresentados pelo parceiro principal."],
       ["Podcast do The Group", "Agradecimento no encerramento, junto com os outros oficiais. Aparece nos cortes."],
       ["App", "Logo e benefício na aba de parceiros, abaixo do principal."],
       ["Site", "Logo médio em ogrupo.com.br/parcerias, com link."],
-      ["Instagram", "Marcação no conteúdo da The House e do encontro da marca. 1 post em collab por ano."],
-      ["Relatório", "A cada The House e no encontro da marca."],
+      ["Instagram", "Marcação no conteúdo da The House e dos encontros em que a marca estiver presente. 1 post em collab por ano."],
+      ["Relatório", "A cada The House e nos encontros em que a marca estiver presente."],
     ],
   },
   apoiadores: {
@@ -70,8 +70,7 @@ const NIVEIS = {
     curto: "Aparece pelo produto que entrega nos eventos.",
     vagasTexto: "Até 6 vagas",
     entregas: [
-      ["Nos eventos", "A cada encontro e The House, combinamos se a marca quer entrar com produto: charuto personalizado, caixa de vinho, brinde. O The Group define o que é entregue aos membros. O produto é à parte da cota. O apoiador não aparece no backdrop."],
-      ["Podcast do The Group", "Aparece nos cortes, junto com os outros parceiros."],
+      ["Nos eventos", "A cada encontro e The House, combinamos se a marca quer entrar com produto: charuto personalizado, caixa de vinho, brinde. O The Group define o que é entregue aos membros e o que fica exposto no evento. O produto é à parte da cota. O apoiador não aparece no backdrop."],
       ["App", "Benefício na aba de parceiros."],
       ["Site", "Logo pequeno em ogrupo.com.br/parcerias, com link."],
       ["Instagram", "Menção em story do evento em que o produto entrou."],
@@ -189,7 +188,7 @@ function nivel(n) {
   const total = AJUSTES.vagas[n].length, a = abertas(n);
   let status = a === 0 ? "Todas as vagas deste nível estão preenchidas."
     : total === 1 ? "<b>Vaga aberta.</b>"
-    : "<b>" + a + " de " + total + " vagas abertas.</b> As vagas com logo já estão preenchidas.";
+    : "<b>" + a + " de " + total + " vagas abertas.</b>" + (a < total ? " As vagas com logo já estão preenchidas." : "");
   const preco = AJUSTES.preco[n];
 
   let h = '<section class="hero wrap"><p class="eyebrow">' + N.rotulo + "</p><h1>" + N.titulo + "</h1>" +
