@@ -102,8 +102,8 @@ const BASE = [
 const PERFIL = [
   "Infoproduto",
   "Nutra",
-  "SaaS e aplicativos",
-  "Marca própria",
+  "SaaS",
+  "Aplicativos",
 ];
 
 /* ---------------- montagem ---------------- */
