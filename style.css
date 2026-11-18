@@ -1,4 +1,4 @@
-/* versão 5 */
+/* versão 6 */
 :root {
   --bg: #ffffff;
   --ink: #000000;
@@ -17,7 +17,7 @@
 html { scroll-behavior: smooth; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); }
 body {
-  font-family: Poppins, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font-family: Fustat, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
