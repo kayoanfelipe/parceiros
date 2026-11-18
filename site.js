@@ -100,11 +100,10 @@ const BASE = [
 ];
 
 const PERFIL = [
-  "Resposta direta e conversão",
-  "Marcas físicas e nutracêuticos",
-  "SaaS e recorrência",
-  "Experts e marcas pessoais",
-  "Copywriters e gestores de mídia",
+  "Infoproduto",
+  "Nutra",
+  "SaaS e aplicativos",
+  "Marca própria",
 ];
 
 /* ---------------- montagem ---------------- */
@@ -159,6 +158,7 @@ function home() {
     '<p class="lead muted">Três níveis de parceria com o grupo, por contrato anual. Clique numa vaga aberta para ver tudo o que aquele nível recebe.</p></section>';
 
   h += '<section class="wrap"><div class="audience"><p class="big">' + esc(AJUSTES.receita) + '</p><p class="big-sub">' + esc(AJUSTES.receitaTexto) + '</p>' +
+    '<p class="aud-label">Donos das operações que escalam em quatro mercados</p>' +
     '<ul class="chips">' + PERFIL.map((p) => "<li>" + p + "</li>").join("") + "</ul></div></section>";
 
   ORDEM.forEach((n, k) => {
@@ -237,7 +237,7 @@ function semViuva(raiz) {
 
 /* Equilibra frases curtas em qualquer navegador: estreita a caixa até o menor
    tamanho que mantém o mesmo número de linhas, para as linhas ficarem parecidas. */
-const EQUILIBRAR = "h1, .pay, .lead, .desc, .big-sub, .price, .count, .status, .cta h2, .cta p, .compare .s, .base-grid p";
+const EQUILIBRAR = "h1, .pay, .aud-label, .lead, .desc, .big-sub, .price, .count, .status, .cta h2, .cta p, .compare .s, .base-grid p";
 function equilibrar() {
   document.querySelectorAll(EQUILIBRAR).forEach((el) => {
     el.style.maxWidth = "";
