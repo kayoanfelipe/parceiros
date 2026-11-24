@@ -5,6 +5,7 @@
    Para marcar uma vaga como preenchida, troque o null por:
      { nome: "Empresa", logo: "logos/empresa.svg", link: "https://empresa.com.br", categoria: "Checkout" }
    (suba o arquivo do logo na pasta logos/; link e categoria são opcionais)
+   Vaga reservada: acrescente reservado: true (mostra o logo e "Reservado").
 
    Preço: fica vazio de propósito. Para mostrar, preencha o texto,
    por exemplo principal: "R$ 150 mil por ano". Vazio = não aparece.
@@ -16,9 +17,9 @@ const AJUSTES = {
   pagamento: "",
   preco: { principal: "R$ 150 mil por ano", oficiais: "R$ 50 mil por ano", apoiadores: "R$ 15 mil por ano" },
   vagas: {
-    principal: [null],
+    principal: [{ nome: "Slash", logo: "logos/slash.svg", reservado: true }],
     oficiais: [null, null, null, null],
-    apoiadores: [null, null, null, null, null, null],
+    apoiadores: [{ nome: "Enay Viagens", logo: "logos/enay.svg", link: "https://wa.me/5547996469430" }, null, null, null, null, null],
   },
 };
 /* ------------------------------------------------------------------ */
@@ -120,7 +121,7 @@ function abertas(n) {
 }
 function contagem(n) {
   const total = AJUSTES.vagas[n].length, a = abertas(n);
-  if (a === 0) return "Todas preenchidas";
+  if (a === 0) return total === 1 && AJUSTES.vagas[n][0].reservado ? "Reservada" : "Todas preenchidas";
   if (total === 1) return "Vaga aberta";
   return a + " de " + total + " abertas";
 }
@@ -134,9 +135,9 @@ function slot(n, v, i, destaque) {
   }
   const alvo = v.link ? ' href="' + esc(v.link) + '" target="_blank" rel="noopener"' : "";
   const tag = v.link ? "a" : "div";
-  return "<" + tag + ' class="slot filled" id="vaga-' + (i + 1) + '"' + alvo + ">" +
+  return "<" + tag + ' class="slot filled' + (v.reservado ? " reserved" : "") + '" id="vaga-' + (i + 1) + '"' + alvo + ">" +
     '<span class="logo"><img src="' + ROOT + esc(v.logo) + '" alt="' + esc(v.nome) + '"></span>' +
-    '<span class="state"><i></i>' + esc(v.categoria || "Preenchida") + "</span></" + tag + ">";
+    '<span class="state"><i></i>' + esc(v.reservado ? "Reservado" : v.categoria || "Preenchida") + "</span></" + tag + ">";
 }
 
 function slots(n, destaque) {
@@ -186,7 +187,8 @@ function nivel(n) {
   const m = location.hash.match(/vaga-(\d+)/);
   const destaque = m ? +m[1] : 0;
   const total = AJUSTES.vagas[n].length, a = abertas(n);
-  let status = a === 0 ? "Todas as vagas deste nível estão preenchidas."
+  let status = total === 1 && AJUSTES.vagas[n][0] && AJUSTES.vagas[n][0].reservado ? "<b>Vaga reservada.</b>"
+    : a === 0 ? "Todas as vagas deste nível estão preenchidas."
     : total === 1 ? "<b>Vaga aberta.</b>"
     : "<b>" + a + " de " + total + " vagas abertas.</b>" + (a < total ? " As vagas com logo já estão preenchidas." : "");
   const preco = AJUSTES.preco[n];
